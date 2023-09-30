@@ -1,31 +1,31 @@
-import '@styles/globals.css';
-import Nav from '@components/Nav';
-import Provider from '@components/Provider';
+import "@styles/globals.css";
+
+import Nav from "@components/Nav";
+import Provider from "@components/Provider";
+import React from 'react';
+
 export const metadata = {
-    title: 'Fullstack Next App',
-    description: 'Discover & share ai prompts'
-}
+  title: "Promptopia",
+  description: "Discover & Share AI Prompts",
+};
 
-const RootLayout = ({children}: {children: React.ReactNode}) => {
-
-  return (
-    <html lang="en">
-
-        <body>
-            <div className="main">
-                <div className="gradient">
-
-                </div>
-
-                <div className="app">
-                    <Nav/>
-                    {children}
-                </div>
+const RootLayout = ({ children }: {children: React.ReactNode}) => (
+  <html lang='en'>
+    <body >
+     
+       <Provider>
+        <div className='main'>
+            <div className='gradient' />
             </div>
-        </body>
 
-    </html>
-  )
-}
+            <main className='app'>
+            <Nav />
+            {children}
+            </main>
 
-export default RootLayout
+       </Provider>
+    </body>
+  </html>
+);
+
+export default RootLayout;
