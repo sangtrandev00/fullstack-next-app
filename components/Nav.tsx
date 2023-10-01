@@ -10,6 +10,8 @@ import { BuiltInProviderType } from 'next-auth/providers/index';
 
 const Nav = () => {
 
+  const {data: session} = useSession();
+
   const isUserLoggedIn = true;
 
   const [providers, setProviders] = useState<Record<LiteralUnion<BuiltInProviderType, string>, ClientSafeProvider> | null>(null);
@@ -39,20 +41,17 @@ const Nav = () => {
       <p className="logo_text" onClick={() => console.log("click hello!")}> 
         Promptopia
       </p>
-      {/* Desktop Navigateion */}
 
       <div className="sm:flex hidden">
-      {isUserLoggedIn ? 
+      {session?.user ? 
       (<div className="flex gap-3 md:gap-5">
           <Link href="/create-prompt" className="black_btn">
             Create Post
           </Link>
 
           <button type="button" onClick={() => signOut()} className="outline_btn">Sign Out</button>
-
-
               <div className="flex">
-                <Image width="37" height="37" src="/assets/images/logo.svg" alt="profile" className="rounded-full" onClick={() => setToggleDropdown((prev) => !prev)}/>
+                <Image width="37" height="37" src={session?.user?.image} alt="profile" className="rounded-full" onClick={() => setToggleDropdown((prev) => !prev)}/>
               
                 {toggleDropdown && (
               <div className='dropdown'>
@@ -102,7 +101,7 @@ const Nav = () => {
         {isUserLoggedIn ? (
           <div className='flex'>
             <Image
-              src={"/assets/images/logo.svg"}
+              src={session?.user?.image as string}
               width={37}
               height={37}
               className='rounded-full'

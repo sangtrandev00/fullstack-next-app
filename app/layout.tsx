@@ -12,7 +12,6 @@ export const metadata = {
 const RootLayout = ({ children }: {children: React.ReactNode}) => (
   <html lang='en'>
     <body >
-     
        <Provider>
         <div className='main'>
             <div className='gradient' />
@@ -22,7 +21,6 @@ const RootLayout = ({ children }: {children: React.ReactNode}) => (
             <Nav />
             {children}
             </main>
-
        </Provider>
     </body>
   </html>

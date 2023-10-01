@@ -1,6 +1,12 @@
 import React from 'react'
+import Prompt from '@models/prompt';
+import { IPost } from '@app/types/Post';
 
-const PromptCard = () => {
+interface PromptCardProps {
+  post: IPost;
+  handleTagClick: () => void;
+}
+const PromptCard = (props: PromptCardProps) => {
   return (
     <div>
       

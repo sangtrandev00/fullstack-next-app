@@ -14,6 +14,7 @@ const Home = () => {
       <p className="desc text-center">
         Promptopia is an open source project AI Promting tool for modern world to discover
       </p>
+      <Feed/>
     </section>
   )
 }

@@ -22,10 +22,11 @@ const handler = NextAuth({
       // store the user id from MongoDB to session
       const sessionUser = await User.findOne({ email: session?.user?.email });
 
-      // Something went wrong here. Check it laer
-      if(session && session.user && session.user?.id) {
-        session.user.id = sessionUser._id.toString();
-      }
+      // Something went wrong here. Check it later
+
+      session.user.id = sessionUser._id.toString();
+
+      // Session user nằm ở đâu! Tại sao không thấy nó mà định nghĩa
 
       return session;
     },
@@ -46,7 +47,7 @@ const handler = NextAuth({
         }
 
         return true
-      } catch (error: {message: string}) {
+      } catch (error: any) {
         console.log("Error checking if user exists: ", error.message);
         return false
       }
