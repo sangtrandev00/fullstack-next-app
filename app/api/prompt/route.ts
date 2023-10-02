@@ -6,11 +6,10 @@ import Prompt from '@models/prompt';
 
 export const GET = async(req: Request, res: Response) => {
 
-
     try {
         await connectToDB();
 
-        const Prompts = await Prompt.find();
+        const Prompts = await Prompt.find().populate('creator');
 
         return new Response(JSON.stringify(Prompts), { 
             status: 200,

@@ -4,12 +4,12 @@ import React, {useState, useEffect} from 'react'
 import PromptCard from './PromptCard';
 import { IPost } from '@app/types/Post';
 
-const PromptCardList = ({data, handleTagClick}: {data: Array<IPost>, handleTagClick: () => void}) => {
+const PromptCardList = ({data, handleTagClick, handleDelete, handleEdit}: {data: Array<IPost>, handleTagClick: () => void, handleEdit: () => void, handleDelete: () => void}) => {
   return (
     <div className="mt-16 prompt_layout">
 
       {data.map((post) => {
-        return <PromptCard key={post._id} post={post} handleTagClick={handleTagClick} />
+        return <PromptCard key={post._id} post={post} handleTagClick={handleTagClick} handleEdit={handleEdit} handleDelete={handleDelete} />
       })}
 
     </div>
@@ -50,10 +50,8 @@ const Feed = () => {
       <form action="" className="revlative w-full flex-center">
           <input type="text" name="" id="" placeholder='Search for a tag or username' value={searchText} onChange={handleSearchChange} className="search_input peer" />
 
-        <PromptCardList data={posts || []} handleTagClick={() => {}} />
-
       </form>
-
+        <PromptCardList data={posts || []} handleTagClick={() => {}} handleDelete={() => {}} handleEdit={() => {}} />
     </section>
   )
 }

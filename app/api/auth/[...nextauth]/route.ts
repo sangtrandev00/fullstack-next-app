@@ -9,6 +9,9 @@ console.log({
   clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
 })
 
+// Dùng mô hình đăng nhập bình thường như thế nào, chỉ local thôi ??? Đăng nhập này dùng mô hình session thôi đúng không ?
+// Deploy một sản phẩm ???
+// Ứng dụng và tạo một con application MyCV cho bản thân.
 const handler = NextAuth({
   providers: [
     GoogleProvider({
